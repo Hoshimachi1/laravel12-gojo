@@ -81,10 +81,6 @@ Route::get('/active/teacher', function () {
     return view('active.teacher', compact('teachers'));
 })->name('active.teacher');
 
-Route::get('/category/sport', [CategoryController::class, 'sport']);
-Route::get('/category/politic', [CategoryController::class, 'politic']);
-Route::get('/category/entertain', [CategoryController::class, 'entertain']);
-Route::get('/category/auto', [CategoryController::class, 'auto']);
 
 Route::get('query/sql', function () {
     $products = DB::select("SELECT * FROM products");
