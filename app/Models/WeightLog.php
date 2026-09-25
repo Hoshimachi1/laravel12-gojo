@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class WeightLog extends Model
 {
-    //
-
-    protected $fillable = ['weight', 'recorded_at', 'note'];
+    protected $fillable = ['weight', 'recorded_at'];
 }

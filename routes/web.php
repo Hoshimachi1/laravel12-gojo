@@ -146,13 +146,10 @@ Route::post('/product-submit', function (Request $request) {
 })->name('product.submit');
 
 
-use App\Http\Controllers\WeightLogController;
+use App\Http\Controllers\WeightController;
 
-Route::resource('weight-logs', WeightLogController::class)->except(['create', 'show', 'edit']);
-
-
-Route::get('/', [WeightLogController::class, 'index'])->middleware('auth','role:admin,teacher');
-
+Route::resource('weights', WeightController::class);
+Route::get('/', [WeightController::class, 'index']);
 
 Route::resource('license', LicenseController::class);
 Route::resource('user', UserController::class);
@@ -165,14 +162,18 @@ Route::get('/about-me', [AboutMeController::class, 'index'])->name('about-me');
 
 // 2. ลิงก์งานต่าง ๆ (EP02 - EP08)
 // หมายเหตุ: หากมี Route เดิมของ EP เหล่านี้อยู่แล้ว สามารถใช้ Route เดิมได้เลย
-Route::get('/gallery', function () {
-    return view('gallery'); // EP02 Hero
-})->name('gallery');
+Route::get('/active/index', function () {
+    return view('active/index');
+})->name('index');
 
 Route::get('/active/index', function () {
-    return view('active.index'); // EP03 Active Bootstrap
-})->name('active.index');
+    return view('active/index');
+})->name('index');
 
-Route::get('/weights', function () {
-    return view('weights.index'); // EP07 Weight
+Route::get('/', function () {
+    return view('weights.index');
 })->name('weights');
+
+Route::get('/', function () {
+    return view('welcome');
+});

@@ -10,15 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('weight_logs', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('weight', 5, 2);
-            $table->date('recorded_at');
-            $table->string('note')->nullable();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('weight_logs', function (Blueprint $table) {
+        $table->id();
+        $table->decimal('weight', 5, 2);
+        $table->date('recorded_at');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
