@@ -5,7 +5,10 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Console\LangPublishCommand;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sail\Console\PublishCommand;
+use League\Flysystem\UrlGeneration\PublicUrlGenerator;
 
 class User extends Authenticatable
 {
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,4 +49,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+        
+        Public function license(){
+       return $this->hasOne(License::class, 'user_id', 'id' );
+   }
+   public function vehicles(){
+       return $this->hasMany(Vehicle::class, 'user_id', 'id');
+   }
+
 }
